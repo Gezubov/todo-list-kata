@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { formatDistanceToNow } from 'date-fns';
 import NewTaskForm from '../new-task-form/new-task-form';
 import TaskList from '../task-list/task-list';
 import Footer from '../footer/footer';
@@ -84,17 +83,14 @@ export default class TodoApp extends Component {
   }
 
   createTodoItem(text) {
-    
-    const created = formatDistanceToNow(new Date(Date.now()), { addSuffix: true, includeSeconds: true });
     const todoItem = {
       id: uuidv4(),
-      created: `created ${created} ago`,
+      created: Date.now(),
       description: text,
       completed: false,
       edit: false,
     };
     return todoItem;
-    
   }
 
   render() {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './task.css';
+import { formatDistanceToNow } from 'date-fns/esm';
 
 export default class Task extends Component {
   static defaultProps = {
@@ -64,7 +65,7 @@ export default class Task extends Component {
           />
           <label>
             <span className="description">{description}</span>
-            <span className="created">{created}</span>
+            <span className="created">{formatDistanceToNow(created, { includeSeconds: true })}</span>
           </label>
           <button
             type="submit"
